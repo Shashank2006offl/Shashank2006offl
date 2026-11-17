@@ -1,166 +1,192 @@
-# Shashank R
+<div align="center">
 
-**AI / ML engineer** · Graph neural networks · Vision transformers · Retrieval and agentic systems
+<img src="assets/header.svg" alt="Shashank R, AI / ML Engineer" width="100%" />
 
-I build machine-learning systems that are measured honestly, deployed end to end, and able to explain their own decisions.
+<br/>
 
-B.Tech, Artificial Intelligence & Data Science, Saveetha Engineering College, Chennai (2023 – 2027)
+[![Portfolio](https://img.shields.io/badge/PORTFOLIO-0b132b?style=for-the-badge&logo=vercel&logoColor=6FFFE9&labelColor=0b132b&color=1c2541)](https://shashank-portfolio-c46v.vercel.app)
+[![LinkedIn](https://img.shields.io/badge/LINKEDIN-0b132b?style=for-the-badge&logo=linkedin&logoColor=6FFFE9&labelColor=0b132b&color=1c2541)](https://linkedin.com/in/shashank-r)
+[![Email](https://img.shields.io/badge/EMAIL-0b132b?style=for-the-badge&logo=gmail&logoColor=6FFFE9&labelColor=0b132b&color=1c2541)](mailto:r8013938@gmail.com)
+[![Elsevier](https://img.shields.io/badge/PUBLISHED-ELSEVIER%202026-0b132b?style=for-the-badge&logoColor=6FFFE9&labelColor=0b132b&color=1c2541)](#research)
 
-[Portfolio](https://shashank-portfolio-c46v.vercel.app) · [LinkedIn](https://linkedin.com/in/shashank-r) · [Email](mailto:r8013938@gmail.com)
+<br/>
 
----
+<img src="assets/metrics.svg" alt="95.47% GCN accuracy, 0.943 macro F1, ~99% ViT accuracy, 1 published and 2 papers in review" width="100%" />
 
-## At a glance
+</div>
+
+<br/>
+
+<div align="center"><img src="assets/divider.svg" width="100%" alt="" /></div>
+
+## `> whoami`
+
+I'm a final-year B.Tech student in **AI & Data Science** at Saveetha Engineering College, Chennai, and an **AI Engineer Intern at Nexa Mobility**. I build models that exploit structure (graphs, image patches, embeddings) and wrap them in products people can actually use.
 
 | | |
-|---|---|
-| **Currently** | AI Engineer Intern at Nexa Mobility, building multi-agent LLM workflows for enterprise test selection |
-| **Published** | 1 peer-reviewed paper, *Measurement: Energy* (Elsevier, 2026) |
-| **In review** | 2 manuscripts: GNN respiratory sound classification, ViT 3D-print defect detection |
-| **Focus** | Structure-aware models (GNNs), vision transformers, semantic retrieval, LLM agents |
-| **Open to** | Research collaborations and ML engineering roles |
+|:--|:--|
+| **Right now** | Multi-agent LLM workflows that turn release changes into explainable, validated test selections |
+| **Published** | Elsevier, *Measurement: Energy* (2026) |
+| **Under review** | GNN respiratory classification, ViT 3D-print defect detection |
+| **Looking for** | Research collaborations and ML engineering roles |
 
----
+> **Reporting standard.** Every number here is one I measured. When the headline result and the cross-validated result disagree, I show both.
 
-## Working principle
+<div align="center"><img src="assets/divider.svg" width="100%" alt="" /></div>
 
-> A model result is only useful if someone else can trust it.
+## `> projects`
 
-Every figure in this profile is one I measured. Where a headline number and a cross-validated number disagree, I report both.
+### 01 · Respiratory sounds as a graph
 
----
-
-## Selected work
-
-### 1. Graph-based respiratory sound classification
-
-**Question.** Do respiratory recordings carry relational structure that clip-by-clip classifiers discard?
+*A lung recording is not an isolated clip. What if neighbouring samples could inform each other?*
 
 ```mermaid
 flowchart LR
-    A[WAV audio] --> B[76-d features<br/>MFCC · spectral · chroma · mel]
+    A([WAV audio]) --> B[76-d features<br/>MFCC · spectral · chroma · mel]
     B --> C[K-NN graph<br/>temporal connectivity]
     C --> D[4-layer GCN<br/>residual connections]
-    D --> E[5 respiratory classes]
+    D --> E([5 classes])
+    style A fill:#0f1a3a,stroke:#6FFFE9,color:#e3ebf8
+    style E fill:#0f1a3a,stroke:#b9a7ff,color:#e3ebf8
+    style B fill:#14214a,stroke:#3a506b,color:#e3ebf8
+    style C fill:#14214a,stroke:#3a506b,color:#e3ebf8
+    style D fill:#14214a,stroke:#3a506b,color:#e3ebf8
 ```
 
-| Metric | Value |
-|---|---|
-| Test accuracy | **95.47%** |
-| Macro F1 | **0.943** |
-| 5-fold CV accuracy | **91.00% ± 1.32%** |
-| Samples | 1,211 |
+**95.47%** test accuracy · **0.943** macro F1 · **91.00% ± 1.32%** 5-fold CV · 1,211 samples
+Deployed as a React + Express + Flask app: upload a WAV, get a prediction in real time.
 
-The gap between test accuracy and cross-validation is reported deliberately. Shipped as a full-stack app: upload a WAV file, get a prediction in real time.
+`PyTorch Geometric` · `Librosa` · `Flask` · `Express` · `React` | Manuscript under review | [Code →](https://github.com/Shashank2006offl/REPO-NAME)
 
-`PyTorch Geometric` `Librosa` `Flask` `Express` `React` · Manuscript under review · [Code](https://github.com/Shashank2006offl/REPO-NAME)
+<br/>
 
----
+### 02 · Catching failed prints with a Vision Transformer
 
-### 2. Vision-transformer defect detection for 3D printing
-
-**Question.** If print failures are local texture defects, can a patch-based transformer separate them reliably?
+*Print defects are local texture failures, which is exactly what patch-based attention is good at.*
 
 ```mermaid
 flowchart LR
-    A[Camera frame] --> B[Patch embedding]
+    A([Frame]) --> B[Patch embedding]
     B --> C[Transformer encoder]
-    C --> D[5 defect categories]
-    A -.optional live capture.-> E[Webcam verdict]
+    C --> D([5 defect categories])
+    A -. optional .-> E[Live webcam verdict]
+    style A fill:#0f1a3a,stroke:#6FFFE9,color:#e3ebf8
+    style D fill:#0f1a3a,stroke:#b9a7ff,color:#e3ebf8
+    style B fill:#14214a,stroke:#3a506b,color:#e3ebf8
+    style C fill:#14214a,stroke:#3a506b,color:#e3ebf8
+    style E fill:#14214a,stroke:#3a506b,color:#e3ebf8
 ```
 
-| Metric | Value |
-|---|---|
-| Test accuracy | approx. **99%** |
-| Dataset | Custom, 1,000+ images, 5 categories |
+**~99%** test accuracy on a custom 1,000+ image dataset, shipped with a Flask interface and optional webcam capture.
 
-Deployed behind a Flask interface with optional webcam-based live capture.
+`TensorFlow` · `Keras` · `OpenCV` · `Flask` | Manuscript under review | [Code →](https://github.com/Shashank2006offl/REPO-NAME)
 
-`TensorFlow` `Keras` `OpenCV` `Flask` · Manuscript under review · [Code](https://github.com/Shashank2006offl/REPO-NAME)
+<br/>
 
----
+### 03 · LuminaRole.ai, a resume analyser
 
-### 3. LuminaRole.ai, ML-powered resume analyser
-
-**Question.** How much actionable signal can a single PDF yield?
+*One PDF in; ATS fit, salary estimate and coaching out.*
 
 ```mermaid
 flowchart LR
-    A[Resume PDF] --> B[Parsing and feature extraction]
+    A([Resume PDF]) --> B[Parse + features]
     B --> C[ATS match score]
-    B --> D[Salary prediction<br/>RandomForestRegressor]
-    B --> E[AI resume coaching]
-    F[Firebase Auth<br/>Bearer-token verification] -.guards.-> B
+    B --> D[Salary prediction<br/>RandomForest]
+    B --> E[AI coaching]
+    F{{Firebase Auth<br/>Bearer token}} -.guards API.-> B
+    style A fill:#0f1a3a,stroke:#6FFFE9,color:#e3ebf8
+    style B fill:#14214a,stroke:#3a506b,color:#e3ebf8
+    style C fill:#14214a,stroke:#b9a7ff,color:#e3ebf8
+    style D fill:#14214a,stroke:#b9a7ff,color:#e3ebf8
+    style E fill:#14214a,stroke:#b9a7ff,color:#e3ebf8
+    style F fill:#0f1a3a,stroke:#3a506b,color:#8fa3c0
 ```
 
-An end-to-end career analytics platform. The salary model is trained on Data Science job-market data; the API is protected by Firebase authentication with Bearer-token verification.
+Salary model trained on Data Science job-market data; the API is protected with Firebase authentication.
 
-`React` `Flask` `scikit-learn` `Firebase` · [Code](https://github.com/Shashank2006offl/REPO-NAME)
+`React` · `Flask` · `scikit-learn` · `Firebase` | [Code →](https://github.com/Shashank2006offl/REPO-NAME)
 
----
+<br/>
 
-### 4. Industry work: explainable test selection with multi-agent LLMs
+### 04 · Industry: explainable test selection with agents
 
-At **Nexa Mobility** I work on a workflow that turns release requirements and software-change evidence into validated, explainable test selections.
+At **Nexa Mobility**, release requirements and change evidence flow through a LangGraph multi-agent system that returns a validated, traceable test selection.
 
 ```mermaid
 flowchart TB
-    R[Release requirements and change evidence] --> G{LangGraph orchestrator}
+    R([Requirements + change evidence]) --> G{{LangGraph orchestrator}}
     G --> A1[Release analysis]
     G --> A2[Dependency reasoning]
     G --> A3[Ranking]
     G --> A4[Gap suggestions]
-    G --> A5[Reporting and spreadsheet analysis]
+    G --> A5[Reporting + spreadsheet analysis]
     S[(Test corpus<br/>pgvector · HNSW)] --> A3
-    A1 & A2 & A3 & A4 & A5 --> V[Deterministic ID and coverage validation]
-    V --> O[Approved test selection<br/>claim-to-test traceability]
+    A1 --> V
+    A2 --> V
+    A3 --> V
+    A4 --> V
+    A5 --> V
+    V[Deterministic ID + coverage validation] --> O([Approved selection<br/>claim-to-test traceability])
+    style R fill:#0f1a3a,stroke:#6FFFE9,color:#e3ebf8
+    style O fill:#0f1a3a,stroke:#b9a7ff,color:#e3ebf8
+    style G fill:#14214a,stroke:#6FFFE9,color:#e3ebf8
+    style S fill:#14214a,stroke:#3a506b,color:#e3ebf8
+    style V fill:#14214a,stroke:#b9a7ff,color:#e3ebf8
 ```
 
-What matters to me in this system:
+- **Auditable retrieval:** Sentence Transformers, pgvector with HNSW, cosine similarity, then deterministic checks.
+- **Evidence-linked output:** every selected test traces to the claim and change that justified it.
+- **Built to be reliable:** bounded retries, concurrency controls, separate validation and approval states.
 
-- **Retrieval you can audit.** Sentence Transformers embeddings, pgvector with HNSW indexing, cosine similarity, followed by deterministic ID and coverage checks.
-- **Evidence-linked outputs.** Every selected test traces back to the claim and change evidence that justified it.
-- **Reliability controls.** Bounded retries, concurrency limits, and separate validation and approval states.
+<div align="center"><img src="assets/divider.svg" width="100%" alt="" /></div>
 
----
+## `> research`
 
-## Research
+| Status | Paper | Venue |
+|:--|:--|:--|
+| **Published** | *Adaptive AI Scheduling of Building HVAC to Charge Phase Change Thermal Batteries with Elevator Regenerative Braking Heat*, Rajagopal M., **Shashank R.** | *Measurement: Energy*, Elsevier, 2026 |
+| In review | *GNN-Powered Respiratory Disease Detection* | Manuscript |
+| In review | *3D Printer Defect Detection using Vision Transformers* | Manuscript |
 
-| Status | Title | Venue |
-|---|---|---|
-| Published | *Adaptive AI Scheduling of Building HVAC to Charge Phase Change Thermal Batteries with Elevator Regenerative Braking Heat* (Rajagopal M., **Shashank R.**) | *Measurement: Energy*, Elsevier, 2026 |
-| Under review | *GNN-Powered Respiratory Disease Detection* | Manuscript |
-| Under review | *3D Printer Defect Detection using Vision Transformers* | Manuscript |
+<div align="center"><img src="assets/divider.svg" width="100%" alt="" /></div>
 
----
+## `> stack`
 
-## Technical stack
+<div align="center">
 
-| Area | Tools |
-|---|---|
-| **Modelling** | PyTorch, PyTorch Geometric, TensorFlow, Keras, scikit-learn · GNNs, CNNs, ViTs, Random Forests |
-| **GenAI and agents** | LangGraph, LangChain, RAG, multi-agent systems, LLM APIs |
-| **Retrieval** | Sentence Transformers, pgvector, HNSW, Supabase |
-| **Backend** | FastAPI, Flask, Express |
-| **Frontend** | React, TypeScript, JavaScript, HTML, CSS |
-| **Data and signals** | NumPy, Pandas, Librosa, OpenCV |
+<img src="https://skillicons.dev/icons?i=python,pytorch,tensorflow,sklearn,opencv,numpy,pandas&theme=dark" alt="ML and data tools" /><br/>
+<img src="https://skillicons.dev/icons?i=fastapi,flask,express,react,ts,js,html,css&theme=dark" alt="Backend and frontend tools" /><br/>
+<img src="https://skillicons.dev/icons?i=postgres,supabase,firebase,vercel,git,github&theme=dark" alt="Data and infra tools" />
 
-<details>
-<summary><b>Background and coursework</b></summary>
+</div>
 
 <br/>
 
-- **Education:** B.Tech in Artificial Intelligence & Data Science, Saveetha Engineering College (2023 – 2027). Higher Secondary (CBSE, Science), 2021 – 2023.
-- **Experience:** AI Engineer Intern, Nexa Mobility. Web Development Intern, Connect Infosystems, Chennai (Jun – Jul 2024).
+| Area | Tools |
+|:--|:--|
+| **Modelling** | PyTorch, PyTorch Geometric, TensorFlow, Keras, scikit-learn · GNNs, CNNs, ViTs, Random Forests |
+| **GenAI + agents** | LangGraph, LangChain, RAG, multi-agent systems, LLM APIs |
+| **Retrieval** | Sentence Transformers, pgvector, HNSW, Supabase |
+| **Signals + data** | Librosa, OpenCV, NumPy, Pandas |
+
+<details>
+<summary><b>Education, experience and certifications</b></summary>
+
+<br/>
+
+- **B.Tech, AI & Data Science**, Saveetha Engineering College (2023 – 2027). Higher Secondary (CBSE, Science), 2021 – 2023.
+- **AI Engineer Intern**, Nexa Mobility. **Web Development Intern**, Connect Infosystems, Chennai (Jun – Jul 2024).
 - **Coursework:** Machine Learning, Deep Learning, Graph Neural Networks, Computer Vision, Data Analytics, Statistics, Neural Networks.
 - **Certifications:** Foundations and Core Concepts of PyTorch (Coursera); Machine Learning 101 and Data Analytics Using Pandas (GUVI).
 
 </details>
 
----
+<div align="center"><img src="assets/divider.svg" width="100%" alt="" /></div>
 
-## Get in touch
+<div align="center">
 
-Open to research collaborations, ML engineering roles, and problems where the evaluation is as interesting as the model.
+### Have a hard modelling problem or a research idea?
 
-[Portfolio](https://shashank-portfolio-c46v.vercel.app) · [LinkedIn](https://linkedin.com/in/shashank-r) · [r8013938@gmail.com](mailto:r8013938@gmail.com)
+[**Portfolio**](https://shashank-portfolio-c46v.vercel.app) &nbsp;·&nbsp; [**LinkedIn**](https://linkedin.com/in/shashank-r) &nbsp;·&nbsp; [**r8013938@gmail.com**](mailto:r8013938@gmail.com)
+
+</div>
