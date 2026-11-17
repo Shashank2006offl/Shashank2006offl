@@ -1,189 +1,166 @@
-<div align="center">
+# Shashank R
 
-<img src="https://capsule-render.vercel.app/api?type=cylinder&color=0:0b132b,50:1c2541,100:3a506b&height=230&section=header&text=LAB%20NOTEBOOK&fontSize=64&fontColor=e0fbfc&animation=twinkling&fontAlignY=40&desc=Shashank%20R%20%C2%B7%20experiments%20in%20learning%20from%20signals%2C%20structure%20and%20language&descAlignY=64&descSize=16" width="100%" alt="Lab Notebook banner" />
+**AI / ML engineer** · Graph neural networks · Vision transformers · Retrieval and agentic systems
 
-<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=500&size=19&pause=1100&color=6FFFE9&center=true&vCenter=true&width=760&lines=Hypothesis%3A+a+lung+is+a+graph.;Hypothesis%3A+a+failing+print+looks+different+in+patches.;Hypothesis%3A+a+resume+is+a+signal+worth+scoring.;Method%3A+build+it%2C+measure+it%2C+report+it+honestly." alt="Typing animation" /></a>
+I build machine-learning systems that are measured honestly, deployed end to end, and able to explain their own decisions.
 
-<br/>
+B.Tech, Artificial Intelligence & Data Science, Saveetha Engineering College, Chennai (2023 – 2027)
 
-[![Portfolio](https://img.shields.io/badge/portfolio-open-3a506b?style=flat-square)](https://shashank-portfolio-c46v.vercel.app)
-[![LinkedIn](https://img.shields.io/badge/linkedin-shashank--r-3a506b?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/shashank-r)
-[![Mail](https://img.shields.io/badge/mail-get%20in%20touch-3a506b?style=flat-square&logo=gmail&logoColor=white)](mailto:r8013938@gmail.com)
-[![Elsevier](https://img.shields.io/badge/peer--reviewed-Elsevier%202026-3a506b?style=flat-square)](#peer-reviewed-output)
-
-</div>
+[Portfolio](https://shashank-portfolio-c46v.vercel.app) · [LinkedIn](https://linkedin.com/in/shashank-r) · [Email](mailto:r8013938@gmail.com)
 
 ---
 
-## Abstract
+## At a glance
 
-```
-INVESTIGATOR   Shashank R
-AFFILIATION    Saveetha Engineering College, Chennai   (B.Tech AI & Data Science, 2023-2027)
-FIELD NOTES    graph neural networks / vision transformers / retrieval / agentic systems
-STANDARD       every number reported here is one I measured and can reproduce
-STATUS         active. published once, two manuscripts in review, more experiments running.
-```
-
-This notebook is a record of what I have built, why, and how well it worked. Entries follow one format: a hypothesis, a method, and a result, with the result reported as measured.
+| | |
+|---|---|
+| **Currently** | AI Engineer Intern at Nexa Mobility, building multi-agent LLM workflows for enterprise test selection |
+| **Published** | 1 peer-reviewed paper, *Measurement: Energy* (Elsevier, 2026) |
+| **In review** | 2 manuscripts: GNN respiratory sound classification, ViT 3D-print defect detection |
+| **Focus** | Structure-aware models (GNNs), vision transformers, semantic retrieval, LLM agents |
+| **Open to** | Research collaborations and ML engineering roles |
 
 ---
 
-## Index of experiments
+## Working principle
 
-| ID | Title | Instrument | Result |
-|---|---|---|---|
-| [EXP-001](#exp-001--is-a-lung-a-graph) | Is a lung a graph? | GCN, PyTorch Geometric | 95.47% test accuracy |
-| [EXP-002](#exp-002--can-a-transformer-see-a-failing-print) | Can a transformer see a failing print? | Vision Transformer | approx. 99% test accuracy |
-| [EXP-003](#exp-003--can-a-resume-be-scored-like-a-signal) | Can a resume be scored like a signal? | Random Forest, Flask, Firebase | working end-to-end platform |
+> A model result is only useful if someone else can trust it.
+
+Every figure in this profile is one I measured. Where a headline number and a cross-validated number disagree, I report both.
 
 ---
 
-## EXP-001 &mdash; Is a lung a graph?
+## Selected work
 
-> **Hypothesis.** Respiratory sounds carry structure that isolated-clip classifiers throw away. Connecting similar samples into a graph should let a network use it.
+### 1. Graph-based respiratory sound classification
 
-```
- .wav --> 76-d features --> K-NN graph --> GCN x4 (residual) --> 5 classes
-          MFCC                 temporal
-          spectral             connectivity
-          chroma
-          mel spectrogram
-```
+**Question.** Do respiratory recordings carry relational structure that clip-by-clip classifiers discard?
 
-**Method.** A 76-dimensional feature vector per sample, K-NN graph construction for temporal connectivity, and a 4-layer GCN with residual connections.
-
-**Result.**
-
-```
-test accuracy         95.47 %
-macro F1               0.943
-5-fold CV accuracy    91.00 % +/- 1.32 %
-samples               1,211
+```mermaid
+flowchart LR
+    A[WAV audio] --> B[76-d features<br/>MFCC · spectral · chroma · mel]
+    B --> C[K-NN graph<br/>temporal connectivity]
+    C --> D[4-layer GCN<br/>residual connections]
+    D --> E[5 respiratory classes]
 ```
 
-The cross-validation figure is lower than the headline test accuracy, and I report both on purpose. Deployed as a React + Express + Flask app: drop in a WAV file, get a prediction in real time.
+| Metric | Value |
+|---|---|
+| Test accuracy | **95.47%** |
+| Macro F1 | **0.943** |
+| 5-fold CV accuracy | **91.00% ± 1.32%** |
+| Samples | 1,211 |
 
-`PyTorch Geometric` `Librosa` `Flask` `Express` `React` &nbsp;|&nbsp; Manuscript under review &nbsp;|&nbsp; Code: `github.com/Shashank2006offl/<repo-name>`
+The gap between test accuracy and cross-validation is reported deliberately. Shipped as a full-stack app: upload a WAV file, get a prediction in real time.
+
+`PyTorch Geometric` `Librosa` `Flask` `Express` `React` · Manuscript under review · [Code](https://github.com/Shashank2006offl/REPO-NAME)
 
 ---
 
-## EXP-002 &mdash; Can a transformer see a failing print?
+### 2. Vision-transformer defect detection for 3D printing
 
-> **Hypothesis.** Print defects are local texture failures. A Vision Transformer, which reasons over image patches, should separate them reliably.
+**Question.** If print failures are local texture defects, can a patch-based transformer separate them reliably?
 
+```mermaid
+flowchart LR
+    A[Camera frame] --> B[Patch embedding]
+    B --> C[Transformer encoder]
+    C --> D[5 defect categories]
+    A -.optional live capture.-> E[Webcam verdict]
 ```
- frame --> patches --> transformer encoder --> 5 defect categories
-                                                   |
-                                  webcam capture --+--> live verdict
-```
 
-**Method.** A ViT pipeline trained on a custom dataset of 1,000+ images across 5 defect categories.
+| Metric | Value |
+|---|---|
+| Test accuracy | approx. **99%** |
+| Dataset | Custom, 1,000+ images, 5 categories |
 
-**Result.** Approximately 99% test accuracy, shipped with a Flask interface and optional webcam-based live capture.
+Deployed behind a Flask interface with optional webcam-based live capture.
 
-`TensorFlow` `Keras` `OpenCV` `Flask` &nbsp;|&nbsp; Manuscript under review &nbsp;|&nbsp; Code: `github.com/Shashank2006offl/<repo-name>`
+`TensorFlow` `Keras` `OpenCV` `Flask` · Manuscript under review · [Code](https://github.com/Shashank2006offl/REPO-NAME)
 
 ---
 
-## EXP-003 &mdash; Can a resume be scored like a signal?
+### 3. LuminaRole.ai, ML-powered resume analyser
 
-> **Hypothesis.** One PDF holds enough signal to estimate ATS fit, likely salary, and what to fix.
+**Question.** How much actionable signal can a single PDF yield?
 
+```mermaid
+flowchart LR
+    A[Resume PDF] --> B[Parsing and feature extraction]
+    B --> C[ATS match score]
+    B --> D[Salary prediction<br/>RandomForestRegressor]
+    B --> E[AI resume coaching]
+    F[Firebase Auth<br/>Bearer-token verification] -.guards.-> B
 ```
- PDF --> parse --> features --+--> ATS match score
-                              +--> salary prediction (Random Forest)
-                              +--> AI resume coaching
-          Firebase auth + Bearer Token verification guards the API
-```
 
-**Method.** An end-to-end career analytics platform. The salary model is a RandomForestRegressor trained on Data Science job-market data.
+An end-to-end career analytics platform. The salary model is trained on Data Science job-market data; the API is protected by Firebase authentication with Bearer-token verification.
 
-**Result.** A working platform from a single upload to actionable feedback.
-
-`React` `Flask` `scikit-learn` `Firebase` &nbsp;|&nbsp; Code: `github.com/Shashank2006offl/<repo-name>`
+`React` `Flask` `scikit-learn` `Firebase` · [Code](https://github.com/Shashank2006offl/REPO-NAME)
 
 ---
 
-## Peer-reviewed output
+### 4. Industry work: explainable test selection with multi-agent LLMs
 
-| Status | Paper | Venue |
+At **Nexa Mobility** I work on a workflow that turns release requirements and software-change evidence into validated, explainable test selections.
+
+```mermaid
+flowchart TB
+    R[Release requirements and change evidence] --> G{LangGraph orchestrator}
+    G --> A1[Release analysis]
+    G --> A2[Dependency reasoning]
+    G --> A3[Ranking]
+    G --> A4[Gap suggestions]
+    G --> A5[Reporting and spreadsheet analysis]
+    S[(Test corpus<br/>pgvector · HNSW)] --> A3
+    A1 & A2 & A3 & A4 & A5 --> V[Deterministic ID and coverage validation]
+    V --> O[Approved test selection<br/>claim-to-test traceability]
+```
+
+What matters to me in this system:
+
+- **Retrieval you can audit.** Sentence Transformers embeddings, pgvector with HNSW indexing, cosine similarity, followed by deterministic ID and coverage checks.
+- **Evidence-linked outputs.** Every selected test traces back to the claim and change evidence that justified it.
+- **Reliability controls.** Bounded retries, concurrency limits, and separate validation and approval states.
+
+---
+
+## Research
+
+| Status | Title | Venue |
 |---|---|---|
 | Published | *Adaptive AI Scheduling of Building HVAC to Charge Phase Change Thermal Batteries with Elevator Regenerative Braking Heat* (Rajagopal M., **Shashank R.**) | *Measurement: Energy*, Elsevier, 2026 |
-| In review | *GNN-Powered Respiratory Disease Detection* | manuscript |
-| In review | *3D Printer Defect Detection using Vision Transformers* | manuscript |
+| Under review | *GNN-Powered Respiratory Disease Detection* | Manuscript |
+| Under review | *3D Printer Defect Detection using Vision Transformers* | Manuscript |
 
 ---
 
-## Instruments
+## Technical stack
 
-```python
-bench = {
-    "models":     ["GNN", "CNN", "ViT", "RandomForest"],
-    "frameworks": ["PyTorch", "PyTorch Geometric", "TensorFlow", "Keras", "scikit-learn"],
-    "genai":      ["RAG", "LangGraph", "LangChain", "multi-agent systems", "LLM APIs"],
-    "retrieval":  ["pgvector", "HNSW", "Sentence Transformers", "Supabase"],
-    "services":   ["FastAPI", "Flask", "Express"],
-    "interfaces": ["React", "TypeScript", "HTML", "CSS", "JavaScript"],
-    "data":       ["NumPy", "Pandas", "Librosa", "OpenCV"],
-}
-```
+| Area | Tools |
+|---|---|
+| **Modelling** | PyTorch, PyTorch Geometric, TensorFlow, Keras, scikit-learn · GNNs, CNNs, ViTs, Random Forests |
+| **GenAI and agents** | LangGraph, LangChain, RAG, multi-agent systems, LLM APIs |
+| **Retrieval** | Sentence Transformers, pgvector, HNSW, Supabase |
+| **Backend** | FastAPI, Flask, Express |
+| **Frontend** | React, TypeScript, JavaScript, HTML, CSS |
+| **Data and signals** | NumPy, Pandas, Librosa, OpenCV |
 
-<div align="center">
-
-![Python](https://img.shields.io/badge/-Python-1c2541?style=flat-square&logo=python&logoColor=6FFFE9)
-![PyTorch](https://img.shields.io/badge/-PyTorch-1c2541?style=flat-square&logo=pytorch&logoColor=6FFFE9)
-![TensorFlow](https://img.shields.io/badge/-TensorFlow-1c2541?style=flat-square&logo=tensorflow&logoColor=6FFFE9)
-![scikit-learn](https://img.shields.io/badge/-scikit--learn-1c2541?style=flat-square&logo=scikitlearn&logoColor=6FFFE9)
-![LangChain](https://img.shields.io/badge/-LangChain-1c2541?style=flat-square&logo=langchain&logoColor=6FFFE9)
-![FastAPI](https://img.shields.io/badge/-FastAPI-1c2541?style=flat-square&logo=fastapi&logoColor=6FFFE9)
-![React](https://img.shields.io/badge/-React-1c2541?style=flat-square&logo=react&logoColor=6FFFE9)
-![TypeScript](https://img.shields.io/badge/-TypeScript-1c2541?style=flat-square&logo=typescript&logoColor=6FFFE9)
-![PostgreSQL](https://img.shields.io/badge/-pgvector-1c2541?style=flat-square&logo=postgresql&logoColor=6FFFE9)
-
-</div>
-
----
-
-## Lab log
-
-```
-2021-2023     Higher Secondary (CBSE, Science)
-2023          Joined Saveetha Engineering College, AI & Data Science
-2024 Jun-Jul  Web Development Intern, Connect Infosystems, Chennai
-2026          First peer-reviewed paper published (Elsevier)
-2026          AI Engineer Intern, Nexa Mobility
-2027          Expected graduation
-```
-
-Coursework: Machine Learning, Deep Learning, Graph Neural Networks, Computer Vision, Data Analytics, Statistics, Neural Networks.
-Certifications: Foundations and Core Concepts of PyTorch (Coursera), Machine Learning 101 and Data Analytics Using Pandas (GUVI).
-
----
-
-## Activity, as a snake would see it
-
-<div align="center">
-
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Shashank2006offl/Shashank2006offl/output/github-contribution-grid-snake-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Shashank2006offl/Shashank2006offl/output/github-contribution-grid-snake.svg" />
-  <img alt="Contribution snake" src="https://raw.githubusercontent.com/Shashank2006offl/Shashank2006offl/output/github-contribution-grid-snake.svg" />
-</picture>
+<details>
+<summary><b>Background and coursework</b></summary>
 
 <br/>
 
+- **Education:** B.Tech in Artificial Intelligence & Data Science, Saveetha Engineering College (2023 – 2027). Higher Secondary (CBSE, Science), 2021 – 2023.
+- **Experience:** AI Engineer Intern, Nexa Mobility. Web Development Intern, Connect Infosystems, Chennai (Jun – Jul 2024).
+- **Coursework:** Machine Learning, Deep Learning, Graph Neural Networks, Computer Vision, Data Analytics, Statistics, Neural Networks.
+- **Certifications:** Foundations and Core Concepts of PyTorch (Coursera); Machine Learning 101 and Data Analytics Using Pandas (GUVI).
 
-</div>
+</details>
 
 ---
 
-<div align="center">
+## Get in touch
 
-### Open to research collaborations, ML engineering roles, and problems worth a hypothesis.
+Open to research collaborations, ML engineering roles, and problems where the evaluation is as interesting as the model.
 
-[Portfolio](https://shashank-portfolio-c46v.vercel.app) &nbsp;|&nbsp; [LinkedIn](https://linkedin.com/in/shashank-r) &nbsp;|&nbsp; [Email](mailto:r8013938@gmail.com)
-
-<img src="https://capsule-render.vercel.app/api?type=cylinder&color=0:3a506b,100:0b132b&height=80&section=footer" width="100%" alt="footer" />
-
-</div>
+[Portfolio](https://shashank-portfolio-c46v.vercel.app) · [LinkedIn](https://linkedin.com/in/shashank-r) · [r8013938@gmail.com](mailto:r8013938@gmail.com)
