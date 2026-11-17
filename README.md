@@ -28,7 +28,7 @@ I'm a final-year B.Tech student in **AI & Data Science** at Saveetha Engineering
 | **Right now** | Multi-agent LLM workflows that turn release changes into explainable, validated test selections |
 | **Published** | Elsevier, *Measurement: Energy* (2026) |
 | **Under review** | GNN respiratory classification, ViT 3D-print defect detection |
-| **Looking for** | Research collaborations and ML engineering roles |
+| **Open to** | Internships, research collaborations and ML engineering roles |
 
 > **Reporting standard.** Every number here is one I measured. When the headline result and the cross-validated result disagree, I show both.
 
