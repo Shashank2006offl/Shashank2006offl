@@ -173,8 +173,6 @@ Certifications: Foundations and Core Concepts of PyTorch (Coursera), Machine Lea
 
 <br/>
 
-<img src="https://github-readme-stats.vercel.app/api?username=Shashank2006offl&show_icons=true&theme=midnight-purple&hide_border=true&bg_color=0b132b&title_color=6FFFE9&icon_color=6FFFE9&text_color=e0fbfc" height="165" alt="GitHub stats" />
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Shashank2006offl&layout=compact&hide_border=true&bg_color=0b132b&title_color=6FFFE9&text_color=e0fbfc" height="165" alt="Top languages" />
 
 </div>
 
